@@ -1,11 +1,15 @@
-from flask import Flask, render_template, request, redirect, flash, url_for
+from flask import Flask, render_template, request, redirect, flash, url_for, session
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # Add your OpenWeatherMap API Key here
-API_KEY = 'your_api_key'
+API_KEY = os.getenv('WEATHER_API_KEY')
 
 # Function to get current weather and 3-hour forecast
 def get_weather_and_forecast(city_name):
@@ -52,6 +56,9 @@ def index():
     if request.method == 'POST':
         city_name = request.form.get('city')
 
+        # Save the city name in session for reuse
+        session['city_name'] = city_name
+
         # Get weather and forecast data
         current_weather, hourly_forecast = get_weather_and_forecast(city_name)
         if current_weather:
@@ -63,7 +70,8 @@ def index():
 
 @app.route('/forecast', methods=['GET'])
 def forecast():
-    city_name = 'default_city'  # This should be set to the city used for fetching forecast
+    # Retrieve the last used city from the session
+    city_name = session.get('city_name', 'default_city')
 
     # URL for OpenWeatherMap 5-day forecast
     forecast_url = f"http://api.openweathermap.org/data/2.5/forecast?q={city_name}&appid={API_KEY}&units=metric"

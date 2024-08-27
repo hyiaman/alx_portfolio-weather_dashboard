@@ -58,10 +58,10 @@
     <!-- Current Weather and 3-Hour Forecast Section -->
     <section class="section">
         <div class="container">
-            {% if weather_data %}
-            <h2 class="title">Weather for {{ weather_data.city }} (3-Hour Forecast)</h2>
+            {% if current_weather %}
+            <h2 class="title">Weather for {{ current_weather.city }} (3-Hour Forecast)</h2>
             <div class="columns is-multiline">
-                {% for forecast in weather_data.forecast %}
+                {% for forecast in hourly_forecast %}
                 <div class="column is-one-third">
                     <div class="box">
                         <article class="media">
@@ -101,7 +101,7 @@
     <footer class="footer">
         <div class="container">
             <div class="content has-text-centered">
-                <a href="https://github.com/jkaethee">
+                <a href="https://github.com/hyiaman">
                     <i class="fa fa-github" style="font-size:36px"></i>
                 </a>
             </div>
