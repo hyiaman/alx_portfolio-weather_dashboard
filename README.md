@@ -22,7 +22,7 @@ Before you begin, ensure you have the following installed:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/Mark-Finley/weather-dashboard-mvp.git
+   git clone https://github.com/hyiaman/alx_portfolio-weather_dashboard.git
    cd weather-dashboard-mvp
    ```
 2. **Create and activate a virtual environment** (optional but recommended):
@@ -56,7 +56,4 @@ Before you begin, ensure you have the following installed:
 - Weather Info: "Clear, Temperature: 25°C, Humidity: 60%, Wind Speed: 5 m/s"
 
 ## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your changes.
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is still under development. Contributions are not welcome for now.
