@@ -12,6 +12,8 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 API_KEY = os.getenv('WEATHER_API_KEY')
 
 # Function to get current weather and 3-hour forecast
+
+
 def get_weather_and_forecast(city_name):
     # URLs for OpenWeatherMap API endpoints
     weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units=metric"
@@ -48,6 +50,7 @@ def get_weather_and_forecast(city_name):
 
     return None, None
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     current_weather = None
@@ -67,6 +70,7 @@ def index():
             flash(f"Could not retrieve weather data for {city_name}. Please try again.", 'error')
 
     return render_template('index.html', current_weather=current_weather, hourly_forecast=hourly_forecast)
+
 
 @app.route('/forecast', methods=['GET'])
 def forecast():
@@ -95,6 +99,7 @@ def forecast():
     else:
         flash(f"Could not retrieve 5-day forecast data for {city_name}.", 'error')
         return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
