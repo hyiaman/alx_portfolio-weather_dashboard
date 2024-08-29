@@ -16,8 +16,8 @@ API_KEY = os.getenv('WEATHER_API_KEY')
 
 def get_weather_and_forecast(city_name):
     # URLs for OpenWeatherMap API endpoints
-    weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units=metric"
-    forecast_url = f"http://api.openweathermap.org/data/2.5/forecast?q={city_name}&appid={API_KEY}&units=metric"
+    weather_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units=metric"
+    forecast_url = f"https://api.openweathermap.org/data/2.5/forecast?q={city_name}&appid={API_KEY}&units=metric"
     
     # Fetch data from APIs
     weather_response = requests.get(weather_url)
@@ -78,7 +78,7 @@ def forecast():
     city_name = session.get('city_name', 'default_city')
 
     # URL for OpenWeatherMap 5-day forecast
-    forecast_url = f"http://api.openweathermap.org/data/2.5/forecast?q={city_name}&appid={API_KEY}&units=metric"
+    forecast_url = f"https://api.openweathermap.org/data/2.5/forecast?q={city_name}&appid={API_KEY}&units=metric"
     forecast_response = requests.get(forecast_url)
 
     if forecast_response.status_code == 200:
@@ -102,4 +102,4 @@ def forecast():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
