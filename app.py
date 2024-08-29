@@ -73,7 +73,7 @@ def index():
 
 
 @app.route('/forecast', methods=['GET'])
-def forecast():
+def five_days_forecast():
     # Retrieve the last used city from the session
     city_name = session.get('city_name', 'default_city')
 
