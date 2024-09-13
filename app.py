@@ -8,7 +8,7 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-# Add your OpenWeatherMap API Key here
+# Import openWeatherMap API Key form .env
 API_KEY = os.getenv('WEATHER_API_KEY')
 
 # Function to get current weather and 3-hour forecast
